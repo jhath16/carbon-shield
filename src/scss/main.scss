@@ -132,11 +132,35 @@ h1 {
   margin:0;
 }
 
+@keyframes background {
+  from {
+    background:rgba(0,0,0,1);
+  } 50% {
+    background:rgba(0,0,0,1);
+  }  to {
+    background:rgba(0,0,0,0.5);
+  }
+}
+
 .banner {
   height:500px;
-  background:#222222;
+  background:url('../assets/banner-background.jpg');
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed; //temp?
   color:white;
   text-align:center;
+  position:relative;
+
+  .overlay {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    animation:background 4s ease;
+    background:rgba(0,0,0,0.4);
+  }
 
   h1 {
     padding-top: 60px;
@@ -149,8 +173,8 @@ h1 {
 
   .btn {
     margin-top: 50px;
-    padding:15px 30px;
-    font-size:1.5em;
+    padding:15px 30px; //temp
+    font-size:1.5em; //temp
   }
 }
 
