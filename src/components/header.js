@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from '../assets/CS-Logo.svg';
 
 import {
   Link
@@ -8,30 +9,36 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
-      dropdown: 'closed'
+      dropdown: 'closed',
+      openId: ''
     }
   }
 
   componentDidMount() {
-    let navEl = document.querySelector('header nav');
     document.addEventListener('click', (event) => {
-      console.log(navEl.contains(event.target));
-      if (navEl.contains(event.target)) {
-        this.toggleDropdown();
+      if (event.target.classList.contains('dropdown-toggle')) {
+        this.toggleDropdown(event.target.parentNode.id); //very hacky
       } else {
         this.closeDropdown();
       }
     });
   }
 
-  toggleDropdown() {
-    // still need a way to determine 'which' dropdown is being used.
+  toggleDropdown(id) {
     if (this.state.dropdown === 'open') {
-      document.querySelector('.dropdown.open').classList.remove('open');
-      this.setState({dropdown: 'closed'});
+      // close
+      if (id !== this.state.openId) {
+        document.querySelector('.dropdown.open').classList.remove('open');
+        document.getElementById(id).querySelector('.dropdown').classList.add('open');
+        this.setState({openId: id});
+      } else {
+        document.querySelector('.dropdown.open').classList.remove('open');
+        this.setState({dropdown: 'closed', openId: ''});
+      }
     } else {
-      document.querySelector('.dropdown').classList.add('open');
-      this.setState({dropdown: 'open'});
+      // open
+      document.getElementById(id).querySelector('.dropdown').classList.add('open');
+      this.setState({dropdown: 'open', openId: id});
     }
   }
 
@@ -42,15 +49,21 @@ class Header extends Component {
     }
   }
 
+  componentWillUnmount() {
+    // if the header ever gets unmounted...
+    document.removeEventListener('click');
+  }
+
   render() {
     return (
       <header>
         <div className="container">
-          <img alt='Carbon Shield' src="http://via.placeholder.com/200x100"/>
+          <img alt='Carbon Shield' src={logo}/>
           <nav>
             <ul>
-              <li>
-                <span>Services<i className="caret"></i></span>
+              <li><Link to='/'><span>Home</span></Link></li>
+              <li id='services'>
+                <span className='dropdown-toggle'>Services<i className="caret"></i></span>
                 <div className="dropdown">
                   <ul>
                     <li><Link to={'cloudfilter'}>CloudFilter</Link></li>
@@ -64,19 +77,29 @@ class Header extends Component {
                   </ul>
                 </div>
               </li>
-              <li>
-                <span>About<i className="caret"></i></span>
+              <li id='about'>
+                <span className='dropdown-toggle'>About<i className="caret"></i></span>
                 <div className="dropdown">
                   <ul>
-                    <li>About Us</li>
-                    <li>Why Carbon Shield?</li>
+                    <li><Link to='about-us'>About Us</Link></li>
+                    <li><Link to='why'>Why Carbon Shield?</Link></li>
                   </ul>
                 </div>
               </li>
-              <li>About<i className="caret"></i></li>
-              <li>FAQ<i className="caret"></i></li>
+              <li id='faq'>
+                <span className='dropdown-toggle'>FAQ<i className="caret"></i></span>
+                  <div className="dropdown">
+                    <ul>
+                      <li><Link to='faq'>FAQ</Link></li>
+                      <li><Link to='learn-more'>Learn More</Link></li>
+                    </ul>
+                  </div>
+              </li>
             </ul>
           </nav>
+          <div className="center-container float-right">
+            <Link to='signup'><div className='btn btn-success'>Sign Up</div></Link>
+          </div>
         </div>
       </header>
     );

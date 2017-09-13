@@ -10,6 +10,8 @@ import {
 
 // components
 import Header from './components/header';
+import Banner from './components/banner';
+import Information from './components/information';
 
 class App extends Component {
   render() {
@@ -17,6 +19,8 @@ class App extends Component {
       <Router>
         <div className="app">
           <Header/>
+          <Banner/>
+          <Information/>
         </div>
       </Router>
     );
