@@ -1,6 +1,7 @@
 body {
   background:#efefef;
   color:#7C7C7C;
+  user-select:text;
 }
 
 .container {
@@ -59,6 +60,12 @@ header {
   height:$header-height;
   background:white;
 
+  .contact-number {
+    color:#333;
+    font-weight:bold;
+    margin-right:24px;
+  }
+
   nav {
     display:inline-flex;
     height:100%;
@@ -81,11 +88,14 @@ header {
       padding:0 10px;
       position:relative;
       /* nested kind of deep here */
-      span {
-        cursor:pointer;
-      }
+    }
+
+    .dropdown-toggle {
+      cursor:pointer;
     }
   }
+
+
 
   $img-height: 75px;
   img {
@@ -103,6 +113,7 @@ header {
   background:white;
   width:150px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  z-index:2; //overlay on banner will cover up otherwise
 
   li {
     display:block;
@@ -162,6 +173,7 @@ h1 {
     right:0;
     // animation:background 4s ease; maybe someday
     background:rgba(0,0,0,0.4);
+    z-index:1;
   }
 
   h1 {
@@ -184,6 +196,9 @@ h1 {
   border-bottom: 1px solid #ddd;
   padding: 40px 0;
 
+  i {
+    font-size:3em;
+  }
 }
 
 .info-container {
@@ -200,6 +215,13 @@ h1 {
     margin:12px 0;
     color:#333;
   }
+}
+
+footer {
+  background:#222;
+  color:#7C7C7C;
+  font-weight:bold;
+  padding: 1em 0;
 }
 
 

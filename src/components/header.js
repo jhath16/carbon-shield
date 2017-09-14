@@ -66,14 +66,14 @@ class Header extends Component {
                 <span className='dropdown-toggle'>Services<i className="caret"></i></span>
                 <div className="dropdown">
                   <ul>
-                    <li><Link to={'cloudfilter'}>CloudFilter</Link></li>
-                    <li><Link to={'safesend'}>SafeSend</Link></li>
-                    <li><Link to={'xtramail'}>XtraMail</Link></li>
-                    <li><Link to={'securestore'}>SecureStore</Link></li>
-                    <li><Link to={'bracket'}>Bracket</Link></li>
-                    <li><Link to={'cloudmail'}>CloudMail</Link></li>
-                    <li><Link to={'exchange'}>Exchange +</Link></li>
-                    <li><Link to={'dnshosting'}>DNS Hosting</Link></li>
+                    <li><Link to='cloudfilter'>CloudFilter</Link></li>
+                    <li><Link to='safesend'>SafeSend</Link></li>
+                    <li><Link to='xtramail'>XtraMail</Link></li>
+                    <li><Link to='securestore'>SecureStore</Link></li>
+                    <li><Link to='bracket'>Bracket</Link></li>
+                    <li><Link to='cloudmail'>CloudMail</Link></li>
+                    <li><Link to='exchange'>Exchange +</Link></li>
+                    <li><Link to='dnshosting'>DNS Hosting</Link></li>
                   </ul>
                 </div>
               </li>
@@ -98,6 +98,7 @@ class Header extends Component {
             </ul>
           </nav>
           <div className="center-container float-right">
+            <span className='contact-number'><i className="fa fa-phone" aria-hidden="true"></i> (864) 688-9731</span>
             <Link to='signup'><div className='btn btn-success'>Sign Up</div></Link>
           </div>
         </div>

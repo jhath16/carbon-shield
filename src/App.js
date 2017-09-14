@@ -12,6 +12,7 @@ import {
 import Header from './components/header';
 import Banner from './components/banner';
 import Information from './components/information';
+import Footer from './components/footer';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Header/>
           <Banner/>
           <Information/>
+          <Footer/>
         </div>
       </Router>
     );
