@@ -14,6 +14,7 @@ body {
 ul {
   list-style:none;
   padding:0;
+  margin-bottom:0;
 }
 
 a {
@@ -27,6 +28,16 @@ a {
   &:visited {
     color:inherit;
   }
+}
+
+button {
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+header button {
+  font-size:1.2em;
 }
 
 .caret {
@@ -59,6 +70,9 @@ $header-height:88px;
 header {
   height:$header-height;
   background:white;
+  position:sticky;
+  z-index:100;
+  top:0;
 
   .contact-number {
     color:#333;
@@ -68,7 +82,6 @@ header {
 
   nav {
     display:inline-flex;
-    height:100%;
     flex-direction:column;
     justify-content:center;
     margin-left:20px;
@@ -80,7 +93,6 @@ header {
 
     ul {
       position:relative;
-      top:4px;
     }
 
     li {
@@ -90,7 +102,7 @@ header {
       /* nested kind of deep here */
     }
 
-    .dropdown-toggle {
+    .dropdown-trigger {
       cursor:pointer;
     }
   }
@@ -143,17 +155,17 @@ h1 {
   margin:0;
 }
 
-/* maybe someday
-@keyframes background {
-  from {
-    background:rgba(0,0,0,1);
-  } 50% {
-    background:rgba(0,0,0,1);
-  }  to {
-    background:rgba(0,0,0,0.5);
-  }
-}
-*/
+//  // maybe someday
+// @keyframes background {
+//   from {
+//     background:rgba(0,0,0,1);
+//   } 50% {
+//     background:rgba(0,0,0,1);
+//   }  to {
+//     background:rgba(0,0,0,0.5);
+//   }
+// }
+
 
 .banner {
   height:500px;
@@ -203,6 +215,13 @@ h1 {
 
 .info-container {
   display:flex;
+  justify-content:space-between;
+
+  .info {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+  }
 }
 
 .info {
@@ -221,12 +240,95 @@ footer {
   background:#222;
   color:#7C7C7C;
   font-weight:bold;
-  padding: 1em 0;
+  padding: 1.5em 0;
+}
+
+.footer-container {
+  display:flex;
+  justify-content:space-between;
+}
+
+.nav-dropdown-toggle {
+  font-size:2em;
 }
 
 
-@media screen and (min-width: 1200px) {
-  .container {
-    width:1170px;
+/* media queries */
+// anything below the small devices breackpoint
+@media (min-width:1px) {
+  .header-contact {
+    display:none;
+  }
+
+  .standard-nav {
+    display:none;
+  }
+
+  .nav-dropdown-toggle {
+    display:inline-block;
+  }
+
+  // consider changing this to normal
+  $header-height:66px;
+  header {
+    height:$header-height;
+  }
+
+  $img-height: 58px;
+  header img {
+    height:$img-height;
+    margin-top:($header-height - $img-height) / 2;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .banner {
+    height:300px;
+    font-size:0.8em;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .banner {
+    height:350px;
+    font-size:0.9em;
+  }
+
+  .header-contact {
+    display:flex;
+  }
+
+  .standard-nav {
+    display:inline-flex;
+  }
+
+  .nav-dropdown-toggle {
+    display:none;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .banner {
+    height:450px;
+  }
+
+  $img-height: 66px;
+  header img {
+    height:$img-height;
+    margin-top:($header-height - $img-height) / 2;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  body {
+    font-size:16px;
+  }
+
+  .banner {
+    height:500px;
   }
 }

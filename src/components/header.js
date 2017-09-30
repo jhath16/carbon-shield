@@ -16,7 +16,7 @@ class Header extends Component {
 
   componentDidMount() {
     document.addEventListener('click', (event) => {
-      if (event.target.classList.contains('dropdown-toggle')) {
+      if (event.target.classList.contains('dropdown-trigger')) {
         this.toggleDropdown(event.target.parentNode.id); //very hacky
       } else {
         this.closeDropdown();
@@ -59,46 +59,52 @@ class Header extends Component {
       <header>
         <div className="container">
           <img alt='Carbon Shield' src={logo}/>
-          <nav>
-            <ul>
-              <li><Link to='/'><span>Home</span></Link></li>
-              <li id='services'>
-                <span className='dropdown-toggle'>Services<i className="caret"></i></span>
-                <div className="dropdown">
-                  <ul>
-                    <li><Link to='cloudfilter'>CloudFilter</Link></li>
-                    <li><Link to='safesend'>SafeSend</Link></li>
-                    <li><Link to='xtramail'>XtraMail</Link></li>
-                    <li><Link to='securestore'>SecureStore</Link></li>
-                    <li><Link to='bracket'>Bracket</Link></li>
-                    <li><Link to='cloudmail'>CloudMail</Link></li>
-                    <li><Link to='exchange'>Exchange +</Link></li>
-                    <li><Link to='dnshosting'>DNS Hosting</Link></li>
-                  </ul>
-                </div>
-              </li>
-              <li id='about'>
-                <span className='dropdown-toggle'>About<i className="caret"></i></span>
-                <div className="dropdown">
-                  <ul>
-                    <li><Link to='about-us'>About Us</Link></li>
-                    <li><Link to='why'>Why Carbon Shield?</Link></li>
-                  </ul>
-                </div>
-              </li>
-              <li id='faq'>
-                <span className='dropdown-toggle'>FAQ<i className="caret"></i></span>
+          <div className='center-container standard-nav'>
+            <nav>
+              <ul>
+                <li><Link to='/'><span>Home</span></Link></li>
+                <li id='services'>
+                  <span className='dropdown-trigger'>Services<i className="caret"></i></span>
+                  <div className="dropdown">
+                    <ul>
+                      <li><a href='https://mailprotector.com/cloudfilter/'>CloudFilter</a></li>
+                      <li><a href='https://mailprotector.com/safesend/'>SafeSend</a></li>
+                      <li><a href='https://mailprotector.com/xtramail/'>XtraMail</a></li>
+                      <li><a href='https://mailprotector.com/securestore/'>SecureStore</a></li>
+                      <li><a href='https://mailprotector.com/bracket/'>Bracket</a></li>
+                      <li><a href='https://mailprotector.com/cloudmail/'>CloudMail</a></li>
+                      <li><a href='https://mailprotector.com/hostedexchange/'>Exchange +</a></li>
+                      <li><Link to='dnshosting'>DNS Hosting</Link></li>
+                      <li><a href='/'>Office 365</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li id='about'>
+                  <span className='dropdown-trigger'>About<i className="caret"></i></span>
+                  <div className="dropdown">
+                    <ul>
+                      <li><Link to='about-us'>About Us</Link></li>
+                      <li><Link to='why'>Why Carbon Shield?</Link></li>
+                    </ul>
+                  </div>
+                </li>
+                <li id='faq'>
+                  <span className='dropdown-trigger'>FAQ<i className="caret"></i></span>
                   <div className="dropdown">
                     <ul>
                       <li><Link to='faq'>FAQ</Link></li>
                       <li><Link to='learn-more'>Learn More</Link></li>
                     </ul>
                   </div>
-              </li>
-            </ul>
-          </nav>
-          <div className="center-container float-right">
-            <span className='contact-number'><i className="fa fa-phone" aria-hidden="true"></i> (864) 688-9731</span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div className='center-container float-right'>
+            <button className='nav-dropdown-toggle'><i className="fa fa-bars" aria-hidden="true"></i></button>
+          </div>
+          <div className="header-contact center-container float-right">
+            <span className='contact-number'><i className="fa fa-phone" aria-hidden="true"></i> (864) 335-1064</span>
             <Link to='signup'><div className='btn btn-success'>Sign Up</div></Link>
           </div>
         </div>

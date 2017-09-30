@@ -10,7 +10,7 @@ class Banner extends Component {
       <section className='banner'>
         <div className='overlay'>
           <h1>Carbon Shield</h1>
-          <p>Making Email Cool Again</p>
+          <p>Making Email Simple and Secure</p>
           <Link to='signup'>
             <div className='btn btn-primary'>Sign Up Now</div>
           </Link>
